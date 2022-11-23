@@ -1,0 +1,128 @@
+\documentclass[a4paper，UTF8]{article}
+\usepackage{ctex}
+\title{计量经济学课堂笔记}
+
+
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\part{一元线性回归}
+一元线性回归总共分为四个步骤，分别是模型建立，模型求解，模型验证，模型应用。
+\section{模型建立}
+一元线性回归的模型总共有四种表达形式：
+\begin{equation}
+E(X_i|Y_i) = \hat{\beta_0} + \hat{\beta_1}X_1 + \mu_i
+\end{equation}
+
+\begin{equation}
+Y_i = \hat{\beta_0} + \hat{\beta_1}X_i+\mu_i
+\end{equation}
+
+\begin{equation}
+\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1}x_i
+\end{equation}
+
+\begin{equation}
+{Y_i} = \hat{\beta_0} + \hat{\beta_1}x_i + \mu_i
+\end{equation}
+
+
+其中公式（1）为总体回归函数的条件均值形式，（2）为总体回归函数的真实值形式，（3）为样本回归函数的预测值形式，（4）为样本回归函数的真实值形式。
+
+
+\section{模型求解}
+  一元线性回归模型求解使用ols（普通最小二乘法）进行求解，求解过程不用理会。ols核心思想为残差平方和最小即$min\sum_{n=1}^{i}\mu_i $。
+  通过ols求解出$\beta_0$与$\beta_1$等参数，得出线性回归方程。
+\section{模型验证}
+\subsection{拟合优度检验}
+拟合优度检验量$R^2 = \frac{ESS}{TSS}$。$R^2$取值范围为[0,1]。$R^2$越大解释变量$X_i$对观测量$Y_i$解释力度越强。当$R^2$高于一定阈值时说明，解释变量$x_i$对观测量$y_i$具有较强的解释力度。 
+\subsection{回归系数假设检验}
+回归系数检验使用t统计量，其中$t = \frac{\hat{\beta_i}}{se\beta_i}$。计算出t统计量后与临界值相比较，若t统计量高于临界值则说明该解释变量$x_i$对于观测量$y_i$具有显著性影响。 
+\section{模型应用}
+当通过ols计算出模型$y_i = \hat{\beta_0}+\hat{\beta_1}x_i + \mu_i$,并通过了拟合优度检验与回归系数检验后。可以对模型进行应用。
+此时每当解释变量$x_i$增加一个单位时，观测量$y_i$平均增加$\beta_1$个单位（千万不要漏掉平均！！！）
+\section{补充知识}
+
+\subsection{三种平方和（总平方和、回归平方和、残差平方和）} 
+\begin{equation}
+TSS = ESS + RSS
+\end{equation}
+\begin{equation}
+\sum_{i=1}^{n}(Y_i-\overline{Y})^{2} = \sum{(Y_i-\overline{Y}})^{2} + \sum(\hat{Y}-\overline{Y})^{2}
+\end{equation}
+公式（5）与公式（6）是完全等价的。
+\subsection{三种平方和的对应自由度} 
+
+\begin{table}[h]
+\caption{三种平方和的对应自由度}
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+TSS & 总回归平方和 & n-1 \\
+\hline
+RSS & 残差平方和 & n-k \\
+\hline
+ESS & 回归平方和 & k-1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{一元线性回归的古典假定}
+5个古典假定全部都是对于随机扰动项$\mu_i$而言的
+
+1. 0均值
+\begin{equation}
+E(\mu_i|X_i) = 0 = E(Y_i|X_i)
+\end{equation}
+
+2. 同方差
+\begin{equation}
+Var(\mu_i|X_i) = \sigma^2
+\end{equation}
+
+3. 随机扰动项$\mu_i$之间逐次不相关
+\begin{equation}
+Cov(\mu_i,\mu_j) = 0
+\end{equation}
+
+4. 随机扰动项$\mu_i$与解释变脸$X_i$之间逐次不相关
+\begin{equation}
+Cov(\mu_i,X_i) = 0
+\end{equation}
+
+5. 正态性假定
+\begin{equation}
+\mu_i \sim N(0,\sigma^2)
+\end{equation}
+
+\subsection{最佳线性无偏估计量}
+  BLUE（ the best linear unbiased estimator ）即最佳线性无偏估计量，应满足以下3点特性：
+  
+1. 无偏性:
+满足$E(\mu_i) = 0$的古典假定
+
+2. 有效性:
+满足$Var(\mu_i) = \sigma^2$的古典假定
+
+3. 线性性:
+满足$Cov(\mu_i,\mu_j) = 0$的古典假定
+
+
+\part{多元线性回归}
+
+\section{模型设立}
+多元线性模型
+\section{模型求解}
+\section{模型检验}
+\section{模型应用}
+
+
+\part{多重共线性}
+\part{异方差}
+\part{自相关}
+
+\end{document}
